@@ -18,7 +18,7 @@ int batteryIsOk(float temperature, float soc, float chargeRate)
 
 int isTempWithinRange( float temperature)
 {
-  if( 0<temperature<45)
+  if((temperature>0 ) && (temperature<45))
     return isSOCWithinRange(soc);
   else
     return 0;
@@ -26,7 +26,7 @@ int isTempWithinRange( float temperature)
 
 int isSOCWithinRange (float soc)
 {
-  if(20<soc<80)
+  if((soc<20) && (soc<80))
     return isChargeRateValid(chargeRate);
   else 
     return 0;
