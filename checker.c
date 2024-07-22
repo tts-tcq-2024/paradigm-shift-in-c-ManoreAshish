@@ -7,7 +7,7 @@ float chargeRate=0;
 
 int batteryIsOk(float temperature, float soc, float chargeRate) 
 {
-  if(isTempWithinRange(temperature));
+  if(isTempWithinRange(temperature))
    return 1; 
   else
    return 0;
