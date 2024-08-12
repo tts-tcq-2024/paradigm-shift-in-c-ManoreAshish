@@ -9,7 +9,7 @@ float Tempupperlimit=45;
 float Templowerlimit=0;
 float SOCupperlimit=80;
 float SOClowerlimit=20;
-float ChargeRateUpperlimit=0.8
+float ChargeRateUpperlimit=0.8;
 
 int isTempWithinRange( float temperature);
 int isSOCWithinRange (float soc);
@@ -80,7 +80,7 @@ void ChargeRateWarningIndicator()
 {
   float ChargeRateTolerance=0;
   ChargeRateTolerance=(ChargeRateUpperlimit *5)/100;
-  if((ChargeRateUpperlimit-SOCTolerance) < chargeRate < (ChargeRateUpperlimit))
+  if((ChargeRateUpperlimit-ChargeRateTolerance) < chargeRate < (ChargeRateUpperlimit))
     printf("Approaching threshold of Valid charge rate");
 }
 
