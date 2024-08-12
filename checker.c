@@ -5,6 +5,7 @@ float temperature=0;
 float soc=0;
 float chargeRate=0;
 int SOCupperlimit=80;
+int SOClowerlimit=20;
 int isTempWithinRange( float temperature);
 int isSOCWithinRange (float soc);
 int isChargeRateValid (float chargeRate);
@@ -27,7 +28,7 @@ int isTempWithinRange( float temperature)
 
 int isSOCWithinRange (float soc)
 {
-  if((soc<20) && (soc<80))
+  if((soc<20) && (soc<SOCupperlimit))
   {
     WarningIndicator();
     return isChargeRateValid(chargeRate);
@@ -44,13 +45,15 @@ int isChargeRateValid (float chargeRate)
     return 0;
 }
 
-void WarningIndicator()
+void SOCWarningIndicator()
 {
-  int Tolerance=0;
-  Tolerance=(SOCupperlimit *5)/100;
+  int SOCTolerance=0;
+  SOCTolerance=(SOCupperlimit *5)/100;
   
-  if((SOCupperlimit-Tolerance)  <soc< (SOCupperlimit))
+  if((SOCupperlimit-SOCTolerance)  <soc< (SOCupperlimit))
     printf("Approaching charge-peak");
+  if((SOClowerlimit)<soc<(SOClowerlimit+SOCTolerance))
+    printf("Approaching discharge");
   
 }
 
