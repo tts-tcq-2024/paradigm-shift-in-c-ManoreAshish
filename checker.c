@@ -30,7 +30,7 @@ int isSOCWithinRange (float soc)
 {
   if((soc<20) && (soc<SOCupperlimit))
   {
-    WarningIndicator();
+    SOCWarningIndicator();
     return isChargeRateValid(chargeRate);
   }
   else 
